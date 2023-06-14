@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 
-const TasksList = ({ id, listTodoToday, listTodoTomorrow, listTodoUpcoming }) => {
+const TasksList = ({ timeLine,TaskListData}) => {
   const [checkedItems, setCheckedItems] = useState([]);
 
   const handleCheckboxChange = (event, item) => {
@@ -19,8 +19,8 @@ const TasksList = ({ id, listTodoToday, listTodoTomorrow, listTodoUpcoming }) =>
 
   return (
     <div className="tasksList">
-      {id === "1"
-        ? listTodoToday.map((listItem, i) => (
+      {timeLine === "Today"
+        ? TaskListData.map((listItem, i) => (
             <div className="listItem" key={i}>
               <input
                 type="checkbox"
@@ -30,8 +30,8 @@ const TasksList = ({ id, listTodoToday, listTodoTomorrow, listTodoUpcoming }) =>
               <li style={{ textDecoration: isItemChecked(listItem) ? "line-through" : "none" }}>{listItem}</li>
             </div>
           ))
-        : id === "2"
-        ? listTodoTomorrow.map((listItem, i) => (
+        : timeLine === "Tomorrow"
+        ? TaskListData.map((listItem, i) => (
             <div className="listItem" key={i}>
               <input
                 type="checkbox"
@@ -41,8 +41,8 @@ const TasksList = ({ id, listTodoToday, listTodoTomorrow, listTodoUpcoming }) =>
               <li style={{ textDecoration: isItemChecked(listItem) ? "line-through" : "none" }}>{listItem}</li>
             </div>
           ))
-        : id === "3"
-        ? listTodoUpcoming.map((listItem, i) => (
+        : timeLine === "Upcoming"
+        ? TaskListData.map((listItem, i) => (
             <div className="listItem" key={i}>
               <input
                 type="checkbox"

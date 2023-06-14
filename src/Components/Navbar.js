@@ -1,6 +1,7 @@
 import {AiFillCheckCircle} from 'react-icons/ai'
 import {BsFillCalendarDateFill} from 'react-icons/bs'
 import{MdOfflineBolt} from 'react-icons/md'
+
 const Navbar = () => {
     return (
         <div className="Navbar">

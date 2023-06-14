@@ -1,11 +1,18 @@
 import { useState } from 'react';
 import { IconContext } from 'react-icons';
 import {AiFillPlusCircle}from 'react-icons/ai'
-import HandleUserChoice from './HandleUserChoice';
+import ChoosingModal from './ChoosingModal';
+
 const Form = ({addListToday,addListTomorrow,addListUpcoming}) => {
     const [inputText,setInputText]=useState('');
-    const [showComponent, setShowComponent] = useState(false);
+    const [showChooseTimeLine, setshowChooseTimeLine] = useState(false);
     
+    const checkInputFeild=() => {
+        if (inputText.trim().length !== 0) {
+            setshowChooseTimeLine(true);
+        }
+        else alert("Please enter a task to add!")
+       }
     return (
         <div className="form">
             <form>
@@ -21,12 +28,7 @@ const Form = ({addListToday,addListTomorrow,addListUpcoming}) => {
                     <AiFillPlusCircle
                          color='#00BFFF'
                          size={40}
-                         onClick={() => {
-                                   if (inputText.trim().length !== 0) {
-                                   setShowComponent(true);
-                                   }
-                                   else alert("Please enter a task to add!")
-                                  }}
+                         onClick={checkInputFeild}
                     />
                 </div>
 
@@ -34,9 +36,9 @@ const Form = ({addListToday,addListTomorrow,addListUpcoming}) => {
                 
             </form>
 
-            {showComponent && <HandleUserChoice  inputText={inputText}
-                                                 showComponent={showComponent} 
-                                                 setShowComponent={setShowComponent}
+            {showChooseTimeLine && <ChoosingModal  inputText={inputText}
+                                                 showChooseTimeLine={showChooseTimeLine} 
+                                                 setshowChooseTimeLine={setshowChooseTimeLine}
                                                  addListToday={addListToday}
                                                  addListTomorrow={addListTomorrow}
                                                  addListUpcoming={addListUpcoming} 
